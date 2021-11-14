@@ -1,0 +1,79 @@
+CREATE TABLE Administrator (  
+    admin_id VARCHAR(255) NOT NULL,  
+    admin_name VARCHAR(255) NOT NULL,  
+    admin_mobNo LONG NOT NULL,  
+    admin_email VARCHAR(255) NOT NULL,  
+    admin_pwd VARCHAR(255) NOT NULL,  
+    admin_createdAt DATE,  
+    admin_createdBy VARCHAR(255),  
+    lastUpdatedOn DATE,  
+    lastUpdatedBy VARCHAR(255),  
+    deletedOn DATE,  
+    deletedBy VARCHAR(255),  
+    PRIMARY KEY (admin_id)   
+) 
+ 
+ 
+CREATE TABLE Student (  
+    student_id VARCHAR(255) NOT NULL,  
+    student_name VARCHAR(255) NOT NULL,  
+    student_mobNo LONG NOT NULL,  
+    student_email VARCHAR(255) NOT NULL,  
+    student_password VARCHAR(255) NOT NULL,  
+    student_gender CHAR(1) CHECK(student_gender IN ('M','F','O')),  
+    student_dob DATE NOT NULL,  
+    student_deleted CHAR(1) CHECK(student_deleted IN ('Y','N')),  
+    student_roll VARCHAR(255) NOT NULL,  
+    student_createdOn DATE,  
+    student_createdBy VARCHAR(255),  
+    lastUpdatedOn DATE,  
+    lastUpdatedBy VARCHAR(255),  
+    student_deletedOn DATE,  
+    student_deletedBy VARCHAR(255),  
+    PRIMARY KEY (student_id)  
+) 
+ 
+ 
+CREATE TABLE ReportCard (  
+    result_id VARCHAR(255),  
+    student_id VARCHAR(255),  
+    admin_id VARCHAR(255),  
+    sub_eng DOUBLE,  
+    sub_maths DOUBLE,  
+    sub_science DOUBLE,  
+    result_status CHAR(1) CHECK(result_status IN ('P','F')),  
+    PRIMARY KEY (result_id),  
+    FOREIGN KEY (student_id) REFERENCES Student(student_id),  
+    FOREIGN KEY (admin_id) REFERENCES Administrator(admin_id)  
+) 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+INSERT INTO Administrator
+
+VALUES
+
+ (40915, "Aditi Pramanik", 9876543210, "mail@mail", "pwd1", '2021-11-10', " Aditi Pramanik ", '2021-11-10', " Aditi Pramanik ", NULL, NULL),
+
+(40915, "Aneek Das", 9876543210, "mail@mail", "pwd2", '2021-11-10', "Aneek Das", '2021-11-10', "Aneek Das", NULL, NULL),
+
+(40916, "Paramita Nath Sarma", 9876543210, "mail@mail", "pwd3", '2021-11-10', "Paramita Nath Sarma", '2021-11-10', "Paramita Nath Sarma", NULL, NULL), 
+
+(40917, "Murtaza Najmi", 9876543210, "mail@mail", "pwd4", '2021-11-10', "Murtaza Najmi", '2021-11-10', "Murtaza Najmi", NULL, NULL),
+
+(40894, "Gourav Das", 9876543210, "mail@mail", "pwd5", '2021-11-10', "Gourav Das", '2021-11-10', "Gourav Das", NULL, NULL),
+
+(40896, "Oihik Chatterjee", 9876543210, "mail@mail", "pwd5", '2021-11-10', "Oihik Chatterjee", '2021-11-10', "Oihik Chatterjee", NULL, NULL),
+
+(40898, "Piyal Dey", 9876543210, "mail@mail", "pwd5", '2021-11-10', "Piyal Dey", '2021-11-10', "Piyal Dey", NULL, NULL);
+
+
+INSERT INTO Student
+VALUES (001, "Payal",8907654321,"payal@mail.com","pwd01","F",'2000-02-02',"N", 40001, '2021-11-10', "Payal", '2021-11-10', "Payal", NULL, NULL)
+ 
+
